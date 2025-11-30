@@ -36,7 +36,7 @@ export const vehicleData = {
     price: 15990.00,
     shortDescription: 'Motor: 1.3L, Dirección: Hidráulica. El mejor vehículo para la ciudad y la familia.',
     images: [
-      'ruta/a/imagen/criat-main.jpg',
+      '/images/argo.jpg',
       'ruta/a/imagen/criat-interior.jpg',
       'ruta/a/imagen/criat-back.jpg',
     ],
@@ -69,7 +69,7 @@ export const vehicleData = {
     price: 15990.00,
     shortDescription: 'Motor: 1.3L, Dirección: Hidráulica. El mejor vehículo para la ciudad y la familia.',
     images: [
-      'ruta/a/imagen/criat-main.jpg',
+      '/images/argo-endurance.jpeg',
       'ruta/a/imagen/criat-interior.jpg',
       'ruta/a/imagen/criat-back.jpg',
     ],
@@ -102,7 +102,7 @@ export const vehicleData = {
     price: 15990.00,
     shortDescription: 'Motor: 1.3L, Dirección: Hidráulica. El mejor vehículo para la ciudad y la familia.',
     images: [
-      'ruta/a/imagen/criat-main.jpg',
+      '/images/pulse.jpg',
       'ruta/a/imagen/criat-interior.jpg',
       'ruta/a/imagen/criat-back.jpg',
     ],
@@ -135,7 +135,7 @@ export const vehicleData = {
     price: 15990.00,
     shortDescription: 'Motor: 1.3L, Dirección: Hidráulica. El mejor vehículo para la ciudad y la familia.',
     images: [
-      'ruta/a/imagen/criat-main.jpg',
+      '/images/toro.jpg',
       'ruta/a/imagen/criat-interior.jpg',
       'ruta/a/imagen/criat-back.jpg',
     ],
@@ -168,7 +168,7 @@ export const vehicleData = {
     price: 15990.00,
     shortDescription: 'Motor: 1.3L, Dirección: Hidráulica. El mejor vehículo para la ciudad y la familia.',
     images: [
-      'ruta/a/imagen/criat-main.jpg',
+      '/images/fastback.jpg',
       'ruta/a/imagen/criat-interior.jpg',
       'ruta/a/imagen/criat-back.jpg',
       'ruta/a/imagen/criat-main.jpg',
@@ -204,7 +204,7 @@ export const vehicleData = {
     price: 15990.00,
     shortDescription: 'Motor: 1.3L, Dirección: Hidráulica. El mejor vehículo para la ciudad y la familia.',
     images: [
-      'ruta/a/imagen/criat-main.jpg',
+      '/images/mobi.jpg',
       'ruta/a/imagen/criat-interior.jpg',
       'ruta/a/imagen/criat-back.jpg',
       'ruta/a/imagen/criat-main.jpg',
@@ -240,7 +240,7 @@ export const vehicleData = {
     price: 15990.00,
     shortDescription: 'Motor: 1.3L, Dirección: Hidráulica. El mejor vehículo para la ciudad y la familia.',
     images: [
-      'ruta/a/imagen/criat-main.jpg',
+      '/images/fiorino.jpg',
       'ruta/a/imagen/criat-interior.jpg',
       'ruta/a/imagen/criat-back.jpg',
     ],

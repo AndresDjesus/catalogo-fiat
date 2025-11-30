@@ -59,29 +59,29 @@ function VehicleDetailsPage() {
         <Grid gutter="xl">
           
           {/* Columna de la Izquierda: Carrusel de Imágenes (50%) */}
-          <Grid.Col span={{ base: 12, lg: 6 }}>
+          <Grid.Col span={{ base: 10, lg: 8 }}>
             <VehicleCarousel images={vehicle.images} /> 
           </Grid.Col>
 
           {/* Columna de la Derecha: Información General y Precio (50%) */}
-          <Grid.Col span={{ base: 12, lg: 6 }}>
+          <Grid.Col span={{ base: 12, lg: 4 }}>
             <Stack gap="xl">
               
               {/* Información General */}
               <Stack gap="xs">
-                <Title order={3}>Información General</Title>
+                <Title order={1}>Información General</Title>
                 <List 
-                    size="sm" 
-                    spacing="xs"
+                    size="30px" 
+                    spacing="29px"
                     icon={
                         <ThemeIcon color="blue" size={18} radius="xl">
-                          <Info size={12} />
+                          <Info size={16} />
                         </ThemeIcon>
                     }
                 >
                   {vehicle.specs.map((spec, index) => (
                     <List.Item key={index}>
-                      <Text span fw={600}>{spec.label}:</Text> {spec.value}
+                      <Text span fw={700}>{spec.label}:</Text> {spec.value}
                     </List.Item>
                   ))}
                 </List>
@@ -89,7 +89,7 @@ function VehicleDetailsPage() {
 
               {/* Precio */}
               <Stack gap="xs">
-                <Title order={3} color="red.7">
+                <Title order={1} color="red">
                     PRECIO ${vehicle.price.toLocaleString('es-VE', { minimumFractionDigits: 2 })} USD
                 </Title>
               </Stack>
