@@ -44,7 +44,7 @@ function Header() {
                     marginLeft: '8px' 
                 }}
              >
-                RONST
+              AUTOMOTORES REIGA
              </span>
           </Anchor>
 

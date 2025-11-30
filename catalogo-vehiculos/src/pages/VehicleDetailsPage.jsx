@@ -84,9 +84,28 @@ function VehicleDetailsPage() {
                     <Table.Tr>
                       <Table.Th>Inicial</Table.Th>
                       <Table.Th>Monto Inicial</Table.Th>
-                      <Table.Th>72 Meses</Table.Th>
-                      <Table.Th>60 Meses</Table.Th>
-                      <Table.Th>48 Meses</Table.Th>
+                      <Table.Th>Cuota</Table.Th>
+                      <Table.Th>Ingresos demostrados</Table.Th>
+                      <Table.Th>Interés</Table.Th>
+                    </Table.Tr>
+                  </Table.Thead>
+                  <Table.Tbody>{financingRows}</Table.Tbody>
+                  <Table.Caption>Los valores son estimados y pueden variar según la tasa de interés.</Table.Caption>
+                </Table>
+              </Stack>
+
+                  <Stack>
+                  <Title order={4}>Tabla de Financiamiento (Cuota Mensual)</Title>
+                <Table striped highlightOnHover withRowBorders withColumnBorders captionSide="bottom">
+                  <Table.Thead>
+                    <Table.Tr>
+                      <Table.Th>Precio</Table.Th>
+                      <Table.Th>Impuesto Placas</Table.Th>
+                      <Table.Th>I.V.A sobre el precio</Table.Th>
+                      <Table.Th>Total del Vehiculo </Table.Th>
+                      <Table.Th>IGTF a Pagar </Table.Th>
+                      <Table.Th>Gastos Administrativos</Table.Th>
+                      <Table.Th>Total a Pagar</Table.Th>
                     </Table.Tr>
                   </Table.Thead>
                   <Table.Tbody>{financingRows}</Table.Tbody>
