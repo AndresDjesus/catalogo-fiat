@@ -6,8 +6,6 @@ export const vehicleData = {
     shortDescription: 'Motor: 1.3L, Dirección: Hidráulica. El mejor vehículo para la ciudad y la familia.',
     images: [
       '/images/cronos.jpg',
-      'ruta/a/imagen/criat-interior.jpg',
-      'ruta/a/imagen/criat-back.jpg',
     ],
     specs: [
       { label: 'Motor', value: '1.3L' },

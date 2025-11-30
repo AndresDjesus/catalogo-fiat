@@ -21,8 +21,7 @@ function VehicleDetailsPage() {
       </>
     );
   }
-
-  // Filas para la tabla de financiamiento
+// Filas para la tabla de financiamiento
   const financingRows = vehicle.financing.map((item, index) => (
     <Table.Tr key={index}>
       <Table.Td fw={700}>{item.initial}</Table.Td>
@@ -33,18 +32,20 @@ function VehicleDetailsPage() {
     </Table.Tr>
   ));
 
+
+  // Lógica para la tabla de detalles de precio
   const totalAPagar = vehicle.priceDetails 
   ? vehicle.priceDetails.reduce((sum, item) => sum + item.value, 0) 
   : 0;
 
-const detailRows = vehicle.priceDetails ? vehicle.priceDetails.map((item, index) => (
-    <Table.Tr key={index}>
-        <Table.Td>{item.label}</Table.Td>
-        <Table.Td fw={600} style={{ textAlign: 'right' }}>
-            ${item.value.toLocaleString('es-VE', { minimumFractionDigits: 2 })}
-        </Table.Td>
-    </Table.Tr>
-)) : null;
+  const detailRows = vehicle.priceDetails ? vehicle.priceDetails.map((item, index) => (
+      <Table.Tr key={index}>
+          <Table.Td>{item.label}</Table.Td>
+          <Table.Td fw={600} style={{ textAlign: 'right' }}>
+              ${item.value.toLocaleString('es-VE', { minimumFractionDigits: 2 })}
+          </Table.Td>
+      </Table.Tr>
+  )) : null;
 
   return (
     <>
@@ -52,13 +53,17 @@ const detailRows = vehicle.priceDetails ? vehicle.priceDetails.map((item, index)
       <Container size="xl" py="xl">
         <Title order={1} mb="lg">{vehicle.title}</Title>
 
+        {/* ========================================================== */}
+        {/* GRUPO SUPERIOR: IMAGEN AMPLIA (6/12) vs. INFO (6/12)       */}
+        {/* ========================================================== */}
         <Grid gutter="xl">
-          {/* Columna de la Izquierda: Carrusel de Imágenes */}
+          
+          {/* Columna de la Izquierda: Carrusel de Imágenes (50%) */}
           <Grid.Col span={{ base: 12, lg: 6 }}>
             <VehicleCarousel images={vehicle.images} /> 
           </Grid.Col>
 
-          {/* Columna de la Derecha: Detalles, Precio y Financiamiento */}
+          {/* Columna de la Derecha: Información General y Precio (50%) */}
           <Grid.Col span={{ base: 12, lg: 6 }}>
             <Stack gap="xl">
               
@@ -89,49 +94,65 @@ const detailRows = vehicle.priceDetails ? vehicle.priceDetails.map((item, index)
                 </Title>
               </Stack>
 
-              {/* Tabla de Financiamiento */}
-              <Stack gap="xs">
-                <Title order={4}>Tabla de Financiamiento (Cuota Mensual)</Title>
-                <Table striped highlightOnHover withRowBorders withColumnBorders captionSide="bottom">
-                  <Table.Thead>
-                    <Table.Tr>
-                      <Table.Th>Inicial</Table.Th>
-                      <Table.Th>Monto Inicial</Table.Th>
-                      <Table.Th>Cuota</Table.Th>
-                      <Table.Th>Ingresos demostrados</Table.Th>
-                      <Table.Th>Interés</Table.Th>
-                    </Table.Tr>
-                  </Table.Thead>
-                  <Table.Tbody>{financingRows}</Table.Tbody>
-                  <Table.Caption>Los valores son estimados y pueden variar según la tasa de interés.</Table.Caption>
-                </Table>
-              </Stack>
-
-                 <Title order={4}>Detalle de Precios y Cargos</Title>
-    <Table striped withRowBorders withColumnBorders>
-        <Table.Thead>
-            <Table.Tr>
-                <Table.Th style={{ width: '70%' }}>Concepto</Table.Th>
-                <Table.Th style={{ width: '30%', textAlign: 'right' }}>Monto</Table.Th>
-            </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>
-            {detailRows}
-            {/* Fila del Total a Pagar, fuera del mapeo */}
-            <Table.Tr style={{ backgroundColor: 'var(--mantine-color-blue-light)' }}>
-                <Table.Td fw={700}>PRECIO FINAL A PAGAR</Table.Td>
-                <Table.Td fw={700} style={{ textAlign: 'right', color: 'var(--mantine-color-blue-7)' }}>
-                    ${totalAPagar.toLocaleString('es-VE', { minimumFractionDigits: 2 })}
-                </Table.Td>
-            </Table.Tr>
-        </Table.Tbody>
-        <Table.Caption>Los valores son estimados y pueden variar según tasas e impuestos.</Table.Caption>
-        </Table>
-        </Stack>
+            </Stack>
           </Grid.Col>
         </Grid>
         
-        {/* Sección de Descripción y Botones (Full Width) */}
+        {/* ========================================================== */}
+        {/* SECCIÓN INFERIOR: TABLAS, DESCRIPCIÓN Y BOTONES            */}
+        {/* ========================================================== */}
+        
+        {/* Fila 1: Tablas Lado a Lado (50/50) */}
+        <Title order={2} mt="xl" mb="lg">Opciones y Cargos</Title>
+        
+        <Grid gutter="xl">
+            {/* Tabla de Financiamiento (Columna Izquierda 50%) */}
+            <Grid.Col span={{ base: 12, lg: 6 }}>
+                <Stack gap="xs">
+                    <Title order={4}>Tabla de Financiamiento (Cuota Mensual)</Title>
+                    <Table striped highlightOnHover withRowBorders withColumnBorders captionSide="bottom">
+                    <Table.Thead>
+                        <Table.Tr>
+                            <Table.Th>Inicial</Table.Th>
+                            <Table.Th>Monto Inicial</Table.Th>
+                            <Table.Th>Cuota</Table.Th>
+                            <Table.Th>Ingresos</Table.Th>
+                            <Table.Th>Interés</Table.Th>
+                        </Table.Tr>
+                    </Table.Thead>
+                    <Table.Tbody>{financingRows}</Table.Tbody>
+                    <Table.Caption>Los valores son estimados y pueden variar según la tasa de interés.</Table.Caption>
+                    </Table>
+                </Stack>
+            </Grid.Col>
+
+            {/* Tabla de Detalles de Precios (Columna Derecha 50%) */}
+            <Grid.Col span={{ base: 12, lg: 6 }}>
+                <Stack gap="xs">
+                    <Title order={4}>Detalle de Precios y Cargos</Title>
+                    <Table striped withRowBorders withColumnBorders>
+                        <Table.Thead>
+                            <Table.Tr>
+                                <Table.Th style={{ width: '70%' }}>Concepto</Table.Th>
+                                <Table.Th style={{ width: '30%', textAlign: 'right' }}>Monto</Table.Th>
+                            </Table.Tr>
+                        </Table.Thead>
+                        <Table.Tbody>
+                            {detailRows}
+                            <Table.Tr style={{ backgroundColor: 'var(--mantine-color-blue-light)' }}>
+                                <Table.Td fw={700}>PRECIO FINAL A PAGING</Table.Td>
+                                <Table.Td fw={700} style={{ textAlign: 'right', color: 'var(--mantine-color-blue-7)' }}>
+                                    ${totalAPagar.toLocaleString('es-VE', { minimumFractionDigits: 2 })}
+                                </Table.Td>
+                            </Table.Tr>
+                        </Table.Tbody>
+                        <Table.Caption>Los valores son estimados y pueden variar según tasas e impuestos.</Table.Caption>
+                    </Table>
+                </Stack>
+            </Grid.Col>
+        </Grid>
+        
+        {/* Fila 2 y 3: Descripción y Botones (Ancho Completo) */}
         <Stack gap="xl" mt="xl">
           
           <Stack gap="sm">
@@ -166,6 +187,10 @@ const detailRows = vehicle.priceDetails ? vehicle.priceDetails.map((item, index)
             </Button>
           </Group>
         </Stack>
+        
+        {/* Espacio final */}
+        <div style={{ height: rem(30) }} /> 
+
       </Container>
     </>
   );
