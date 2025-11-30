@@ -33,6 +33,19 @@ function VehicleDetailsPage() {
     </Table.Tr>
   ));
 
+  const totalAPagar = vehicle.priceDetails 
+  ? vehicle.priceDetails.reduce((sum, item) => sum + item.value, 0) 
+  : 0;
+
+const detailRows = vehicle.priceDetails ? vehicle.priceDetails.map((item, index) => (
+    <Table.Tr key={index}>
+        <Table.Td>{item.label}</Table.Td>
+        <Table.Td fw={600} style={{ textAlign: 'right' }}>
+            ${item.value.toLocaleString('es-VE', { minimumFractionDigits: 2 })}
+        </Table.Td>
+    </Table.Tr>
+)) : null;
+
   return (
     <>
       <Header />
@@ -94,25 +107,27 @@ function VehicleDetailsPage() {
                 </Table>
               </Stack>
 
-                  <Stack>
-                  <Title order={4}>Tabla de Financiamiento (Cuota Mensual)</Title>
-                <Table striped highlightOnHover withRowBorders withColumnBorders captionSide="bottom">
-                  <Table.Thead>
-                    <Table.Tr>
-                      <Table.Th>Precio</Table.Th>
-                      <Table.Th>Impuesto Placas</Table.Th>
-                      <Table.Th>I.V.A sobre el precio</Table.Th>
-                      <Table.Th>Total del Vehiculo </Table.Th>
-                      <Table.Th>IGTF a Pagar </Table.Th>
-                      <Table.Th>Gastos Administrativos</Table.Th>
-                      <Table.Th>Total a Pagar</Table.Th>
-                    </Table.Tr>
-                  </Table.Thead>
-                  <Table.Tbody>{financingRows}</Table.Tbody>
-                  <Table.Caption>Los valores son estimados y pueden variar según la tasa de interés.</Table.Caption>
-                </Table>
-              </Stack>
-            </Stack>
+                 <Title order={4}>Detalle de Precios y Cargos</Title>
+    <Table striped withRowBorders withColumnBorders>
+        <Table.Thead>
+            <Table.Tr>
+                <Table.Th style={{ width: '70%' }}>Concepto</Table.Th>
+                <Table.Th style={{ width: '30%', textAlign: 'right' }}>Monto</Table.Th>
+            </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+            {detailRows}
+            {/* Fila del Total a Pagar, fuera del mapeo */}
+            <Table.Tr style={{ backgroundColor: 'var(--mantine-color-blue-light)' }}>
+                <Table.Td fw={700}>PRECIO FINAL A PAGAR</Table.Td>
+                <Table.Td fw={700} style={{ textAlign: 'right', color: 'var(--mantine-color-blue-7)' }}>
+                    ${totalAPagar.toLocaleString('es-VE', { minimumFractionDigits: 2 })}
+                </Table.Td>
+            </Table.Tr>
+        </Table.Tbody>
+        <Table.Caption>Los valores son estimados y pueden variar según tasas e impuestos.</Table.Caption>
+        </Table>
+        </Stack>
           </Grid.Col>
         </Grid>
         

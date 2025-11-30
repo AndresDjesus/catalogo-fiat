@@ -10,7 +10,7 @@ function HomePage() {
       <Header />
       <Container size="xl" py="xl">
         <Title order={1} mb="xl" size={rem(32)}>
-            Bienvenido al Catálogo RONST
+            Bienvenido al Catálogo de Vehículos de AutomotoresReiga
         </Title>
         <Stack gap="xl">
           <Grid>
